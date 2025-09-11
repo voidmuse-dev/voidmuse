@@ -1,0 +1,38 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+gui/node_modules
+/.pnp
+.pnp.js
+/.idea
+
+# IDE
+.vscode
+*.code-workspace
+.history/
+
+# testing
+gui/coverage
+
+# production
+gui/build
+gui/dist
+
+# misc
+.DS_Store
+gui/.env.local
+gui/.env.development.local
+gui/.env.test.local
+gui/.env.production.local
+gui/.idea
+
+gui/npm-debug.log*
+gui/yarn-debug.log*
+gui/yarn-error.log*
+
+# AI IDE
+.cursor/
+.kiro/
+
+# Vite
+gui/.vite
