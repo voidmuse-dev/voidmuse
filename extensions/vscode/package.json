@@ -138,7 +138,13 @@
     "watch": "tsc -watch -p ./",
     "pretest": "npm run compile && npm run lint",
     "lint": "eslint src",
-    "test": "vscode-test"
+    "test": "vscode-test",
+    "dev": "node dev.js dev",
+    "debug": "node dev.js debug",
+    "build": "node dev.js build",
+    "build-gui": "node dev.js build-gui",
+    "install-deps": "node dev.js install",
+    "package": "npx vsce package"
   },
   "devDependencies": {
     "@types/mocha": "^10.0.10",

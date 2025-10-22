@@ -11,6 +11,7 @@ import com.intellij.ui.jcef.JBCefClient;
 import com.voidmuse.idea.plugin.service.ProjectBeanService;
 import com.voidmuse.idea.plugin.service.ProtocDispatchService;
 import com.voidmuse.idea.plugin.util.StateUtils;
+import org.cef.CefApp;
 import org.cef.browser.CefBrowser;
 import org.cef.browser.CefFrame;
 import org.cef.browser.CefMessageRouter;
@@ -46,6 +47,23 @@ public class AIToolTabFactory implements ToolWindowFactory {
                 ProtocDispatchService.getInstance(project));
         jbCefClient.getCefClient().addMessageRouter(messageRouter);
 
+        // Check if development mode is enabled via environment variable or system property
+        boolean isDevelopmentMode = "true".equals(System.getenv("VOIDMUSE_DEV_MODE")) 
+                || "true".equals(System.getProperty("voidmuse.dev.mode"));
+        
+        String targetUrl;
+        if (isDevelopmentMode) {
+            // Development mode: use localhost server
+            targetUrl = "http://localhost:3002/";
+            LOG.info("VoidMuse running in development mode, using: " + targetUrl);
+        } else {
+            // Production mode: use static resources
+            CefApp.getInstance()
+                    .registerSchemeHandlerFactory("http", "voidmuse", new DataSchemeHandlerFactory());
+            targetUrl = "http://voidmuse/index.html";
+            LOG.info("VoidMuse running in production mode, using static resources");
+        }
+
         //添加一个监听，页面加载完成后再注册一次事件，防止丢失
         jbCefClient.addLoadHandler(new CefLoadHandler() {
             @Override
@@ -68,7 +86,6 @@ public class AIToolTabFactory implements ToolWindowFactory {
             }
         }, browser.getCefBrowser());
 
-        // browser.loadURL(StateUtils.getWebHost());
-        browser.loadURL("http://localhost:3002/");
+        browser.loadURL(targetUrl);
     }
 }

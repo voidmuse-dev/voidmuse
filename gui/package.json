@@ -68,8 +68,8 @@
     "zod": "^3.25.76"
   },
   "scripts": {
-    "start:dev": "vite --mode development --port 3002",
-    "start:prod": "vite --mode production --port 3002",
+    "dev": "vite --mode development --port 3002",
+    "prod": "vite --mode production --port 3002",
     "build:test": "vite build --mode development",
     "build:prod": "vite build --mode production",
     "build:static": "vite build --mode production && cp -R dist/* ../extensions/intellij/src/main/resources/web/",

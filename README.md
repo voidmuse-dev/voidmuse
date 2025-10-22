@@ -50,13 +50,15 @@ VoidMuse致力于通过**开源组件整合**的方式，以**最低的开发成
 1. 打开VS Code扩展商店 (Ctrl+Shift+X)
 2. 搜索 "VoidMuse"
 3. 点击安装并重启编辑器
+![vscode-plugin](doc/img/run/vscode-plugin.jpg)
 
 **IntelliJ IDEA安装**
 1. 打开 Settings → Plugins
 2. 搜索 "VoidMuse"
 3. 点击安装并重启IDE
+![intellij-plugin](doc/img/run/intellij-plugin.jpg)
 
-作为学习者 - 本地开发学习【另外一个系列讲】
+作为学习者 - 本地开发启动详见 [开发指南](doc/DEVELOPMENT_GUIDE.md)
 
 
 ### 🎯 三分钟快速上手
@@ -137,7 +139,6 @@ VoidMuse致力于通过**开源组件整合**的方式，以**最低的开发成
   - 本地化向量数据库
   - 语义相似度检索
   - 智能代码上下文提取
-- **深度文档**: [Codebase技术原理](doc/codebase-deep-dive.md)
 
 ### 💬 多模型AI对话 (AI Chat)
 
@@ -181,21 +182,21 @@ VoidMuse致力于通过**开源组件整合**的方式，以**最低的开发成
 
 #### 初级路径 (AI概念入门)
 1. [什么是Embedding？](doc/tutorial/embedding-basics.md)
-2. [向量数据库基础]()
+2. 向量数据库基础
 
 #### 高级路径 (工程实践)
 1. [Codebase索引原理与实现](doc/tutorial/codebase-implementation.md)
-2. [提高检索准确率的策略]()
-3. [多模型适配架构设计]()
-4. [MCP协议深度解析]()
+2. 提高检索准确率的策略
+3. 多模型适配架构设计
+4. MCP协议深度解析
 
 ### 🛠️ 实践项目
 
 - [实现深度搜索](doc/tutorial/function%20call的实践-实现深度搜索.md)
-- [Embedding模型踩坑合集]()
-- [自定义Embedding模型集成]()
-- [扩展MCP协议支持]()
-- [实现自定义搜索引擎]()
+- Embedding模型踩坑合集
+- 自定义Embedding模型集成
+- 扩展MCP协议支持
+- 实现自定义搜索引擎
 
 ---
 

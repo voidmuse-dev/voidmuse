@@ -18,7 +18,7 @@ i18n
     fallbackLng: 'zh-CN',
     defaultNS: 'common',
     ns: ['common', 'components', 'pages', 'errors'],
-    debug: process.env.NODE_ENV === 'development',
+    debug: import.meta.env.DEV,
     returnNull: false,
     returnEmptyString: false,
     returnObjects: false,

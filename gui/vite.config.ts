@@ -1,7 +1,6 @@
 import { defineConfig, Plugin } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
-import {nodePolyfills} from 'vite-plugin-node-polyfills';
 
 /**
  * This plugin enables local static pages to access resources without CORS issues
@@ -39,16 +38,11 @@ export default defineConfig({
   base: './',
   plugins: [
     react(),
-    nodePolyfills({
-      include: ['stream'],
-      globals: { 
-        Buffer: true, 
-        global: true,
-        process: true,
-      }
-    }),
     htmlTransformPlugin() 
   ],
+  define: {
+    'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
+  },
   css: {
     preprocessorOptions: {
       scss: {
@@ -69,4 +63,4 @@ export default defineConfig({
     outDir: 'dist', 
     sourcemap: true
   }
-}); 
+});
