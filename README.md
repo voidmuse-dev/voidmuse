@@ -23,8 +23,6 @@ Compatible with IntelliJ IDEA & Visual Studio Code
   <img src="https://img.shields.io/badge/Open%20Source-Yes-green.svg" alt="Open Source" style="height: 22px;" />
 </a>
 
-[中文](README.md) | **English**
-
 </div>
 
 ---
