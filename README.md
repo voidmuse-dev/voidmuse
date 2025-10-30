@@ -27,6 +27,16 @@ Compatible with IntelliJ IDEA & Visual Studio Code
 
 ---
 
+## 🌐 Live Demo
+
+- Online Web: https://voidmuse-dev.github.io/voidmuse/
+
+<div align="center">
+  <img src="doc/img/index.png" alt="VoidMuse Web Home Preview" width="900" />
+</div>
+
+---
+
 ## 🎯 Project Vision
 
 > **More than just an AI plugin, it's an AI engineering learning platform**

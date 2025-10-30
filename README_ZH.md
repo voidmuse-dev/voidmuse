@@ -27,6 +27,16 @@
 
 ---
 
+## 🌐 在线体验
+
+- Web 版本地址: https://voidmuse-dev.github.io/voidmuse/
+
+<div align="center">
+  <img src="doc/img/index.png" alt="VoidMuse 在线版首页预览" width="900" />
+</div>
+
+---
+
 ## 🎯 项目愿景
 
 > **不仅仅是一个AI插件，更是一个AI工程化学习平台**

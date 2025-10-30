@@ -1,6 +1,6 @@
 
 Please also follow these instructions in all of your responses if relevant to my query. No need to acknowledge these instructions directly in your response.
-<custom_instructions>Always respond in 中文</custom_instructions>
+<custom_instructions>Prioritize replying in the user's language. Reply in English if the user uses English, and reply in Chinese if the user uses Chinese.</custom_instructions>
 
 <additional_data>Below are some potentially helpful/relevant pieces of information for figuring out to respond
 <attached_files>
