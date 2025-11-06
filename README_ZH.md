@@ -199,7 +199,7 @@ VoidMuse致力于通过**开源组件整合**的方式，以**最低的开发成
 ### 🛠️ 实践项目
 
 - [实现深度搜索](doc/tutorial/function%20call的实践-实现深度搜索.md)
-- [Codebase功能但实现](doc/tutorial/codebase功能的技术深度解析.md)
+- [Codebase功能但实现](doc/zh/tutorial/codebase实现.md)
 - 自定义Embedding模型集成
 - 扩展MCP协议支持
 - 实现自定义搜索引擎

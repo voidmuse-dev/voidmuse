@@ -196,7 +196,7 @@ We carefully select and integrate the following excellent open source components
 ### 🛠️ Practice Projects
 
 - [Implementing Deep Search](doc/en/tutorial/function-call-deep-search.md)
-- [Codebase Feature Technical Deep Analysis](doc/en/tutorial/codebase-technical-deep-dive.md)
+- [Codebase Feature Technical Deep Analysis](doc/en/tutorial/codebase-implementation.md)
 - Custom Embedding Model Integration
 - Extending MCP Protocol Support
 - Implementing Custom Search Engines
