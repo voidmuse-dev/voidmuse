@@ -44,6 +44,7 @@ import org.apache.commons.lang3.StringUtils;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileWriter;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.util.concurrent.ConcurrentHashMap;
@@ -53,6 +54,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.nio.charset.StandardCharsets;
 
 import static com.voidmuse.idea.plugin.protocol.CallJavaProtocol.*;
 
@@ -450,25 +452,70 @@ public class CallJavaHandlerImpl implements CallJavaHandler {
 
     // 获取URL内容的实现
     private String getUrlContent(String urlString) {
+        HttpURLConnection connection = null;
+        String result = "";
         try {
             URL url = new URL(urlString);
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
+            connection.setInstanceFollowRedirects(true);
             connection.setConnectTimeout(10000);
             connection.setReadTimeout(10000);
 
-            try (BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
+            // 许多站点（含 Cloudflare/Zendesk）会拦截无UA的请求，补充常见请求头
+            connection.setRequestProperty("User-Agent",
+                    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) VoidMuse-IntelliJ/1.0 Chrome/118.0 Safari/537.36");
+            connection.setRequestProperty("Accept",
+                    "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
+            connection.setRequestProperty("Accept-Language", "en-US,en;q=0.9");
+            connection.setRequestProperty("Accept-Encoding", "gzip,deflate");
+            // 使用站点根作为通用 Referer，有助于绕过部分拦截
+            connection.setRequestProperty("Referer", url.getProtocol() + "://" + url.getHost() + "/");
+
+            int status = connection.getResponseCode();
+            InputStream stream = (status >= 200 && status < 300)
+                    ? connection.getInputStream()
+                    : connection.getErrorStream();
+
+            if (stream == null) {
+                throw new java.io.IOException("HTTP " + status + " with empty body");
+            }
+
+            // 处理压缩响应
+            String contentEncoding = connection.getContentEncoding();
+            if (contentEncoding != null) {
+                String enc = contentEncoding.toLowerCase();
+                if (enc.contains("gzip")) {
+                    stream = new java.util.zip.GZIPInputStream(stream);
+                } else if (enc.contains("deflate")) {
+                    stream = new java.util.zip.InflaterInputStream(stream);
+                }
+            }
+
+            try (BufferedReader reader = new BufferedReader(new InputStreamReader(stream, StandardCharsets.UTF_8))) {
                 StringBuilder content = new StringBuilder();
                 String line;
                 while ((line = reader.readLine()) != null) {
                     content.append(line).append("\n");
                 }
-                return content.toString();
+                if (status >= 200 && status < 300) {
+                    LOG.info("Successfully fetched content from URL: " + urlString);
+                    result = content.toString();
+                    
+                } else {
+                    LOG.error("Failed to fetch content from URL: " + urlString + " with HTTP status: " + status);
+                    result =  "Error: HTTP " + status + " " + content.toString();
+                }
             }
         } catch (Exception e) {
             LOG.error("Error getting URL content: " + urlString, e);
-            return "Error: " + e.getMessage();
+            result = "Error: " + e.getMessage();
+        } finally {
+            if (connection != null) {
+                connection.disconnect();
+            }
         }
+        return Base64.encode(result);
     }
 
     // 执行命令的实现

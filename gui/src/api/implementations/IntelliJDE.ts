@@ -564,7 +564,8 @@ export class IntelliJIDE implements IDEInterface {
         IdeaAsyncMgr.sendMessage(param,
           function onSuccess(response) {
             console.log('IntelliJ getUrlContent callback success:', url);
-            resolve(response);
+            const decodedResponse = base64Decode(response);
+            resolve(decodedResponse);
           },
           function onFailure(error_code, error_message) {
             console.error('IntelliJ getUrlContent callback failed:', error_code, error_message);

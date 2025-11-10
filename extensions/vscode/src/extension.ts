@@ -445,8 +445,10 @@ export class VoidmuseWebViewProvider implements vscode.WebviewViewProvider {
                         break;
                     case "getUrlContent":
                         try {
-                            response = await getUrlContent(arg.url);
-                            console.log(response);
+                            const urlContent = await getUrlContent(arg.url);
+                            console.log(urlContent);
+                            const encodedContent = Buffer.from(urlContent).toString('base64');
+                            response = encodedContent;
                         } catch (error) {
                             vscode.window.showErrorMessage("get html content error!");
                         }

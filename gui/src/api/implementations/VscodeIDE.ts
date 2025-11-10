@@ -551,7 +551,8 @@ export class VscodeIDE implements IDEInterface {
         vscodeMgr.sendMessage(param,
           function onSuccess(response) {
             console.log('vscode getUrlContent callback success:', url);
-            resolve(response);
+            const decodedResponse = base64Decode(response);
+            resolve(decodedResponse);
           },
           function onFailure(error_code, error_message) {
             console.error('vscode getUrlContent callback failed:', error_code, error_message);

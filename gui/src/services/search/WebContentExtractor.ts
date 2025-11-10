@@ -103,8 +103,8 @@ export class WebContentExtractor {
         
         try {
             // Use allorigins proxy service directly
-            const html = await this.getContentFromProxy(params.url);
-            // const html = await this.getContentFromIDE(params.url);
+            // const html = await this.getContentFromProxy(params.url);
+            const html = await this.getContentFromIDE(params.url);
 
             // Parse HTML content
             const result = this.parseHtmlContent(html, params.url, maxLength);

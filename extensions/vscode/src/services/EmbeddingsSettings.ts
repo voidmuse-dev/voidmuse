@@ -21,7 +21,7 @@ export class EmbeddingsSettings {
     
     /**
      * function: 获取embeddings的模型名称，配置内容：
-     *         "global:embeddingModels": "[{\"key\":\"1752222055608\",\"name\":\"gte-Qwen2-1.5B-instruct-f16:latest\",\"provider\":\"OpenAI\",\"enabled\":true,\"modelId\":\"gte-Qwen2-1.5B-instruct-f16:latest\",\"apiKey\":\"~\",\"baseUrl\":\"https://lpfm2-ollama.yy.com\",\"isCustomModel\":true}]",
+     *         "global:embeddingModels": "[{\"key\":\"1752222055608\",\"name\":\"gte-Qwen2-1.5B-instruct-f16:latest\",\"provider\":\"OpenAI\",\"enabled\":true,\"modelId\":\"gte-Qwen2-1.5B-instruct-f16:latest\",\"apiKey\":\"~\",\"baseUrl\":\"xxx\",\"isCustomModel\":true}]",
         "global:selectedEmbeddingModel": "1752222055608",
         "global:isAutoEmbedding": "false",
      * 遍历embeddingModels，转换为json对象，取enabled=true的name

@@ -52,7 +52,7 @@ interface CallbackMessage {
 const callJavaCallback = async (message: string): Promise<void> => {
     try {
         // message is json string data, convert to corresponding object
-        console.log(`callJavaCallback message: ${message}`);
+        console.log(`callJavaCallback message: ${message.substring(0, 100)}`);
         const parsedMessage: CallbackMessage = JSON.parse(message); // Convert json string to object
         if (parsedMessage.requestId && IdeaAsyncMgr.pendingRequests.has(parsedMessage.requestId)) {
             const { onSuccess, onFailure } = IdeaAsyncMgr.pendingRequests.get(parsedMessage.requestId)!;
