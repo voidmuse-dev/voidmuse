@@ -152,9 +152,7 @@ VoidMuse致力于通过**开源组件整合**的方式，以**最低的开发成
   - 语义相似度检索
   - 智能代码上下文提取
 
-<div align="center">
-  <video controls src="doc/video/codebase-demo.mp4" width="900"></video>
-</div>  
+https://github.com/user-attachments/assets/e76329ee-c2a1-478f-a554-f478225c158c
 
 ### 💬 多模型AI对话 (AI Chat)
 
@@ -166,9 +164,7 @@ VoidMuse致力于通过**开源组件整合**的方式，以**最低的开发成
   - DeepSeek系列
   - 通过OpenRouter支持更多模型
 
-<div align="center">
-  <video controls src="doc/video/chat-demo.mp4" width="900"></video>
-</div>
+https://github.com/user-attachments/assets/a36b0890-89e4-4223-b42c-4c8e1103a86d
 
 ### 🔗 MCP协议支持
 
@@ -187,9 +183,7 @@ VoidMuse致力于通过**开源组件整合**的方式，以**最低的开发成
   - [博查搜索配置](doc/zh/bochaSearchConfig.md)
 - **免费资源**: [大模型厂商免费额度汇总](doc/zh/freeLLMQuota.md)
 
-<div align="center">
-  <video controls src="doc/video/search-demo.mp4" width="900"></video>
-</div>
+https://github.com/user-attachments/assets/82ec0711-136a-4647-9150-b2e112dd3e98
 ---
 
 ## 📚 学习路径指南
